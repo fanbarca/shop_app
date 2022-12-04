@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:search_page/search_page.dart';
 import 'package:shop_app/screens/cart/cart_screen.dart';
+import 'package:shop_app/screens/products/products_screen.dart';
+import 'package:shop_app/screens/search/search_screan.dart';
 
 import '../../../size_config.dart';
 import 'icon_btn_with_counter.dart';
@@ -10,14 +12,6 @@ class HomeHeader extends StatelessWidget {
   HomeHeader({
     Key? key,
   }) : super(key: key);
-
-  var people = [
-    Person('Mike', 'Barron', 64),
-    Person('Todd', 'Black', 30),
-    Person('Ahmad', 'Edwards', 55),
-    Person('Anthony', 'Johnson', 67),
-    Person('Annette', 'Brooks', 39),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -30,39 +24,12 @@ class HomeHeader extends StatelessWidget {
           // SearchField(),
           IconBtnWithCounter(
             svgSrc: "assets/icons/Search Icon.svg",
-            press: () => showSearch(
-              context: context,
-              delegate: SearchPage(
-                onQueryUpdate: print,
-                items: people,
-                searchLabel: 'Search people',
-                suggestion: GestureDetector(
-                  onTap: () => FocusScope.of(context).unfocus(),
-                  child: const Center(
-                    child: Text('Filter people by name, surname or age'),
-                  ),
-                ),
-                failure: const Center(
-                  child: Text('No person found :('),
-                ),
-                filter: (Person person) => [
-                  person.name,
-                  person.surname,
-                  person.age.toString(),
-                ],
-                sort: (Person a, Person b) => a.compareTo(b),
-                builder: (Person person) => ListTile(
-                  title: Text(person.name),
-                  subtitle: Text(person.surname),
-                  trailing: Text('${person.age} yo'),
-                ),
-              ),
-            ),
+            press: () => search(context),
           ),
-          IconBtnWithCounter(
-            svgSrc: "assets/icons/Cart Icon.svg",
-            press: () => Navigator.pushNamed(context, CartScreen.routeName),
-          ),
+          // IconBtnWithCounter(
+          //   svgSrc: "assets/icons/Cart Icon.svg",
+          //   press: () => Navigator.pushNamed(context, CartScreen.routeName),
+          // ),
           IconBtnWithCounter(
             svgSrc: "assets/icons/Bell.svg",
             numOfitem: 3,
@@ -72,13 +39,34 @@ class HomeHeader extends StatelessWidget {
       ),
     );
   }
-}
-class Person implements Comparable<Person> {
-  final String name, surname;
-  final num age;
 
-  const Person(this.name, this.surname, this.age);
-
-  @override
-  int compareTo(Person other) => name.compareTo(other.name);
+  void search(context) {
+    showSearch(
+      context: context,
+      delegate: SearchPage(
+        // barTheme: ThemeData.light(),
+        onQueryUpdate: print,
+        items: people,
+        searchLabel: 'Search people',
+        searchStyle: TextStyle(color: Theme.of(context).primaryColorDark),
+        suggestion: const Center(
+          child: Text('Filter people by name, surname or age'),
+        ),
+        failure: const Center(
+          child: Text('No person found :('),
+        ),
+        filter: (Person person) => [
+          person.name,
+          person.surname,
+          person.age.toString(),
+        ],
+        sort: (Person a, Person b) => a.compareTo(b),
+        builder: (Person person) => ListTile(
+          title: Text(person.name),
+          subtitle: Text(person.surname),
+          trailing: Text('${person.age} yo'),
+        ),
+      ),
+    );
+  }
 }

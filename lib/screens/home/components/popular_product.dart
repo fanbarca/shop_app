@@ -3,6 +3,7 @@ import 'package:shop_app/components/product_card.dart';
 import 'package:shop_app/models/Product.dart';
 
 import '../../../size_config.dart';
+import '../../products/products_screen.dart';
 import 'section_title.dart';
 
 class PopularProducts extends StatelessWidget {
@@ -13,10 +14,14 @@ class PopularProducts extends StatelessWidget {
         Padding(
           padding:
               EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-          child: SectionTitle(title: "Popular Products", press: () {}),
+          child: SectionTitle(title: "Popular Products", press: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ProductsScreen()));
+          }),
         ),
         SizedBox(height: getProportionateScreenWidth(20)),
         SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [

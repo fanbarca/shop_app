@@ -9,6 +9,7 @@ import '../../../components/default_button.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 import '../../home/home_screen.dart';
+import '../../home_navigation/home_navigation.dart';
 
 class SignForm extends StatefulWidget {
   @override
@@ -84,7 +85,7 @@ class _SignFormState extends State<SignForm> {
             },
           ),
           GestureDetector(
-            onTap: () => Navigator.pushNamed(context, HomeScreen.routeName)
+            onTap: () => Navigator.pushReplacementNamed(context, HomeNavigation.routeName)
             ,
             child: Padding(
               padding: const EdgeInsets.all(8.0),

@@ -29,9 +29,10 @@ dependencies:
   cupertino_icons: ^1.0.3
   # if you are using latest flutter please update your flutter_svg package to ^0.18.*
   flutter_svg: ^0.22.0 # help us to use SVG in our app
-  provider: ^6.0.0 # for State management
+  hooks_riverpod:
+  flutter_hooks:
   search_page: ^2.2.0
-
+  http: ^0.13.5
 
 
 dev_dependencies:

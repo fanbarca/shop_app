@@ -19,6 +19,17 @@ class Product {
     required this.price,
     required this.description,
   });
+
+  Product.fromMap(Map<String, dynamic> map)
+      : id = map['id'],
+        images =  map['images'],
+        colors = map['colors'],
+        rating = map['rating'],
+        isFavourite = map['isFavourite'],
+        isPopular = map['isPopular'],
+        title = map['title'],
+        price = map['price'],
+        description = map['description'];
 }
 
 // Our demo Products
