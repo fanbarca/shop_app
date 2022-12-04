@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Product {
+class Product implements Comparable<Product> {
   final int id;
   final String title, description;
   final List<String> images;
@@ -30,6 +30,9 @@ class Product {
         title = map['title'],
         price = map['price'],
         description = map['description'];
+
+  @override
+  int compareTo(Product other) => title.compareTo(other.title);
 }
 
 // Our demo Products
@@ -51,7 +54,7 @@ List<Product> demoProducts = [
     ],
     title: "Wireless Controller for PS4™",
     price: 64.99,
-    description: description,
+    description: "Wireless Controller for PS4™ gives you what you want in your gaming from over precision control your games to sharing …",
     rating: 4.8,
     isFavourite: true,
     isPopular: true,
@@ -69,7 +72,7 @@ List<Product> demoProducts = [
     ],
     title: "Nike Sport White - Man Pant",
     price: 50.5,
-    description: description,
+    description: 'Powered by sweat-wicking technology, the Nike Sport Clash Pants are made with stretch-woven fabric that keeps you dry and moving freely from the gym to off-the-beaten-track workouts. High-powered graphics are inspired by the spirit of motocross. Features: Stretchy, lightweight fabric with Dri-FIT technology helps keep you dry, comfortable and moving naturally.',
     rating: 4.1,
     isPopular: true,
   ),
@@ -86,7 +89,7 @@ List<Product> demoProducts = [
     ],
     title: "Gloves XC Omega - Polygon",
     price: 36.55,
-    description: description,
+    description: 'joaijsdoiajsodjo iajoasjoaij doasjid oaji odaisj doasij d',
     rating: 4.1,
     isFavourite: true,
     isPopular: true,
@@ -104,11 +107,9 @@ List<Product> demoProducts = [
     ],
     title: "Logitech Head",
     price: 20.20,
-    description: description,
+    description: 'oikfd oikdof ikoikodfibjodjfiodfijo ijdif jdif idufjojodfij ',
     rating: 4.1,
     isFavourite: true,
   ),
 ];
 
-const String description =
-    "Wireless Controller for PS4™ gives you what you want in your gaming from over precision control your games to sharing …";

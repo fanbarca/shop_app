@@ -4,6 +4,8 @@ import 'package:shop_app/screens/cart/cart_screen.dart';
 import 'package:shop_app/screens/products/products_screen.dart';
 import 'package:shop_app/screens/search/search_screan.dart';
 
+import '../../../components/product_card.dart';
+import '../../../models/Product.dart';
 import '../../../size_config.dart';
 import 'icon_btn_with_counter.dart';
 import 'search_field.dart';
@@ -46,26 +48,21 @@ class HomeHeader extends StatelessWidget {
       delegate: SearchPage(
         // barTheme: ThemeData.light(),
         onQueryUpdate: print,
-        items: people,
-        searchLabel: 'Search people',
+        items: demoProducts,
+        searchLabel: 'Search products',
         searchStyle: TextStyle(color: Theme.of(context).primaryColorDark),
         suggestion: const Center(
-          child: Text('Filter people by name, surname or age'),
+          child: Text('Filter products by title or description'),
         ),
         failure: const Center(
-          child: Text('No person found :('),
+          child: Text('No product found :('),
         ),
-        filter: (Person person) => [
-          person.name,
-          person.surname,
-          person.age.toString(),
+        filter: (Product product) => [
+          product.title,
+          product.description,
         ],
-        sort: (Person a, Person b) => a.compareTo(b),
-        builder: (Person person) => ListTile(
-          title: Text(person.name),
-          subtitle: Text(person.surname),
-          trailing: Text('${person.age} yo'),
-        ),
+        sort: (Product a, Product b) => a.compareTo(b),
+        builder: (Product product) => ProductCard(product: product),
       ),
     );
   }
