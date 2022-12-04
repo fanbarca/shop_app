@@ -8,6 +8,7 @@ import 'package:shop_app/screens/login_success/login_success_screen.dart';
 import '../../../components/default_button.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
+import '../../home/home_screen.dart';
 
 class SignForm extends StatefulWidget {
   @override
@@ -59,8 +60,9 @@ class _SignFormState extends State<SignForm> {
               Text("Remember me"),
               Spacer(),
               GestureDetector(
-                onTap: () => Navigator.pushNamed(
-                    context, ForgotPasswordScreen.routeName),
+                onTap: () =>
+                    Navigator.pushNamed(
+                        context, ForgotPasswordScreen.routeName),
                 child: Text(
                   "Forgot Password",
                   style: TextStyle(decoration: TextDecoration.underline),
@@ -81,6 +83,17 @@ class _SignFormState extends State<SignForm> {
               }
             },
           ),
+          GestureDetector(
+            onTap: () => Navigator.pushNamed(context, HomeScreen.routeName)
+            ,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "Log in later",
+                style: TextStyle(decoration: TextDecoration.underline),
+              ),
+            ),
+          )
         ],
       ),
     );

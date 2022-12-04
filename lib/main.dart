@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       // home: SplashScreen(),
       // We use routeName so that we dont need to remember the name
       initialRoute: SplashScreen.routeName,
+      // initialRoute: HomeScreen.routeName,
       routes: routes,
     );
   }
