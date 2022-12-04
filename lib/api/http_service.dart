@@ -21,7 +21,7 @@ class HttpService {
   }
 
   Future<List<Product>> getMockProducts() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 5));
     return demoProducts;
   }
 }
