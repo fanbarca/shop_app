@@ -1,23 +1,34 @@
 import 'package:flutter/material.dart';
 
+import 'review.dart';
+
 class Product implements Comparable<Product> {
   final int id;
   final String title, description;
   final List<String> images;
   final List<Color> colors;
-  final double rating, price;
+  final double price;
+  final double rating;
   final bool isFavourite, isPopular;
+  final double? discountPercentage;
+  final int stock;
+  final List<Review>? reviews;
+
+
 
   Product({
     required this.id,
+    required this.stock,
     required this.images,
     required this.colors,
     this.rating = 0.0,
     this.isFavourite = false,
     this.isPopular = false,
     required this.title,
+    required this.discountPercentage,
     required this.price,
     required this.description,
+    this.reviews,
   });
 
 
@@ -25,17 +36,21 @@ class Product implements Comparable<Product> {
     id: json["id"],
     title: json["title"],
     price: json["price"].toDouble(),
+    stock: json["stock"],
     description: json["description"],
     rating: json["rating"].toDouble(),
     isFavourite: json["isFavourite"],
     isPopular: json["isPopular"],
     colors: List<Color>.from(json["colors"].map((x) => x)),
     images: List<String>.from(json["images"].map((x) => x)),
+      discountPercentage: json["discountPercentage"].toDouble(),
   );
 
   @override
   int compareTo(Product other) => title.compareTo(other.title);
 }
+
+
 
 // Our demo Products
 
@@ -59,7 +74,7 @@ List<Product> demoProducts = [
     description: "Wireless Controller for PS4™ gives you what you want in your gaming from over precision control your games to sharing …",
     rating: 4.8,
     isFavourite: true,
-    isPopular: true,
+    isPopular: true, discountPercentage: 0.3, stock: 5,
   ),
   Product(
     id: 2,
@@ -76,7 +91,7 @@ List<Product> demoProducts = [
     price: 50.5,
     description: 'Powered by sweat-wicking technology, the Nike Sport Clash Pants are made with stretch-woven fabric that keeps you dry and moving freely from the gym to off-the-beaten-track workouts. High-powered graphics are inspired by the spirit of motocross. Features: Stretchy, lightweight fabric with Dri-FIT technology helps keep you dry, comfortable and moving naturally.',
     rating: 4.1,
-    isPopular: true,
+    isPopular: true, discountPercentage: 0.2, stock: 10,
   ),
   Product(
     id: 3,
@@ -94,7 +109,7 @@ List<Product> demoProducts = [
     description: 'joaijsdoiajsodjo iajoasjoaij doasjid oaji odaisj doasij d',
     rating: 4.1,
     isFavourite: true,
-    isPopular: true,
+    isPopular: true, discountPercentage: 0, stock: 9,
   ),
   Product(
     id: 4,
@@ -111,7 +126,7 @@ List<Product> demoProducts = [
     price: 20.20,
     description: 'oikfd oikdof ikoikodfibjodjfiodfijo ijdif jdif idufjojodfij ',
     rating: 4.1,
-    isFavourite: true,
+    isFavourite: true, discountPercentage: 0, stock: 0,
   ),
 ];
 

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart';
-import 'package:shop_app/models/Product.dart';
+import 'package:shop_app/models/product.dart';
 
 
 final httpServiceProvider = Provider((ref) {
@@ -9,8 +9,8 @@ final httpServiceProvider = Provider((ref) {
 });
 
 final getProductsProvider = FutureProvider.autoDispose<List<Product>>((ref) {
-  // return ref.watch(httpServiceProvider).getMockProducts();
-  return ref.watch(httpServiceProvider).getProducts();
+  return ref.watch(httpServiceProvider).getMockProducts();
+  // return ref.watch(httpServiceProvider).getProducts();
 });
 
 
@@ -33,7 +33,7 @@ class HttpService {
   }
 
   Future<List<Product>> getMockProducts() async {
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(Duration(seconds: 1));
     return demoProducts;
   }
 }

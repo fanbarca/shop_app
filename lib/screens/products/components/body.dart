@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../api/http_service.dart';
 import '../../../components/product_card.dart';
-import '../../../models/Product.dart';
+import '../../../models/product.dart';
 import '../../../size_config.dart';
 import 'header.dart';
 import 'products_grid.dart';

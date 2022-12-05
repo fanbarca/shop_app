@@ -5,7 +5,7 @@ import 'package:shop_app/screens/products/products_screen.dart';
 import 'package:shop_app/screens/search/search_screan.dart';
 
 import '../../../components/product_card.dart';
-import '../../../models/Product.dart';
+import '../../../models/product.dart';
 import '../../../size_config.dart';
 import 'icon_btn_with_counter.dart';
 import 'search_field.dart';

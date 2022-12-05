@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../api/http_service.dart';
 import '../../../components/product_card.dart';
-import '../../../models/Product.dart';
+import '../../../models/product.dart';
 
 class ProductsGrid extends ConsumerWidget {
   const ProductsGrid({Key? key}) : super(key: key);

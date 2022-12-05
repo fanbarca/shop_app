@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shop_app/components/product_card.dart';
 
 import '../../api/http_service.dart';
-import '../../models/Product.dart';
+import '../../models/product.dart';
 import 'components/body.dart';
 
 
