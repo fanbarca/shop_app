@@ -1,6 +1,18 @@
 import 'dart:convert';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart';
 import 'package:shop_app/models/Product.dart';
+
+
+final httpServiceProvider = Provider((ref) {
+  return HttpService();
+});
+
+final getProductsProvider = FutureProvider<List<Product>>((ref) {
+  return ref.watch(httpServiceProvider).getMockProducts();
+  // return ref.watch(httpServiceProvider).getProducts();
+});
+
 
 class HttpService {
   final String URL = "http://localhost:8080/getProducts";
