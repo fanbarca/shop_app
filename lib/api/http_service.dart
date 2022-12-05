@@ -8,14 +8,14 @@ final httpServiceProvider = Provider((ref) {
   return HttpService();
 });
 
-final getProductsProvider = FutureProvider<List<Product>>((ref) {
-  return ref.watch(httpServiceProvider).getMockProducts();
-  // return ref.watch(httpServiceProvider).getProducts();
+final getProductsProvider = FutureProvider.autoDispose<List<Product>>((ref) {
+  // return ref.watch(httpServiceProvider).getMockProducts();
+  return ref.watch(httpServiceProvider).getProducts();
 });
 
 
 class HttpService {
-  final String URL = "http://localhost:8080/getProducts";
+  final String URL = "https://myshop.free.beeceptor.com/products";
 
   Future<List<Product>> getProducts() async {
     Response res = await get(Uri.parse(URL));
@@ -24,7 +24,7 @@ class HttpService {
       final Map<String, dynamic> map = jsonDecode(res.body);
 
       List<Product> products = [];
-      map.forEach((key, value) => products.add(Product.fromMap(value)));
+      map.forEach((key, value) => products.add(Product.fromJson(value)));
 
       return products;
     } else {

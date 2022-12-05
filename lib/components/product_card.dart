@@ -12,10 +12,19 @@ class ProductCard extends StatelessWidget {
     this.width = 140,
     this.aspectRetio = 1.02,
     required this.product,
-  }) : super(key: key);
+  }) : showImage = true, super(key: key);
+
+  const ProductCard.withoutImage({
+    Key? key,
+    this.width = 140,
+    this.aspectRetio = 1.02,
+    required this.product,
+  }) : showImage = false, super(key: key);
 
   final double width, aspectRetio;
   final Product product;
+  final bool showImage;
+
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +41,7 @@ class ProductCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AspectRatio(
+              if (showImage) AspectRatio(
                 aspectRatio: 1.02,
                 child: Container(
                   padding: EdgeInsets.all(getProportionateScreenWidth(20)),
@@ -42,7 +51,7 @@ class ProductCard extends StatelessWidget {
                   ),
                   child: Hero(
                     tag: product.id.toString(),
-                    child: Image.asset(product.images[0]),
+                    child: product.images.isNotEmpty ? Image.asset(product.images[0]) :Container(),
                   ),
                 ),
               ),

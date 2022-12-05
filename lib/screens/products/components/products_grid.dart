@@ -26,9 +26,9 @@ class ProductsGrid extends ConsumerWidget {
         ),
       );
     }, error: (o, s) {
-      return Expanded(child: Center(child: Text('Couldn\'t fetch data')));
+      return Center(child: Text('Couldn\'t fetch data'));
     }, loading: () {
-      return Expanded(child: Center(child: CircularProgressIndicator()));
+      return Center(child: CircularProgressIndicator());
     });
   }
 }

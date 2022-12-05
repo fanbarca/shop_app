@@ -20,16 +20,18 @@ class Product implements Comparable<Product> {
     required this.description,
   });
 
-  Product.fromMap(Map<String, dynamic> map)
-      : id = map['id'],
-        images =  map['images'],
-        colors = map['colors'],
-        rating = map['rating'],
-        isFavourite = map['isFavourite'],
-        isPopular = map['isPopular'],
-        title = map['title'],
-        price = map['price'],
-        description = map['description'];
+
+  factory Product.fromJson(Map<String, dynamic> json) => Product(
+    id: json["id"],
+    title: json["title"],
+    price: json["price"].toDouble(),
+    description: json["description"],
+    rating: json["rating"].toDouble(),
+    isFavourite: json["isFavourite"],
+    isPopular: json["isPopular"],
+    colors: List<Color>.from(json["colors"].map((x) => x)),
+    images: List<String>.from(json["images"].map((x) => x)),
+  );
 
   @override
   int compareTo(Product other) => title.compareTo(other.title);

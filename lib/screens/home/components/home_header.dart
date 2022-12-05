@@ -62,7 +62,7 @@ class HomeHeader extends StatelessWidget {
           product.description,
         ],
         sort: (Product a, Product b) => a.compareTo(b),
-        builder: (Product product) => ProductCard(product: product),
+        builder: (Product product) => ProductCard.withoutImage(product: product),
       ),
     );
   }

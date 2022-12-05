@@ -15,12 +15,9 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     // var selectedNavBarItem = ref.watch(currentNavBarIndexProvider);
 
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        body: Body(),
-        // bottomNavigationBar: CustomBottomNavBar(),
-      ),
+    return Scaffold(
+      body: Body(),
+      // bottomNavigationBar: CustomBottomNavBar(),
     );
   }
 }

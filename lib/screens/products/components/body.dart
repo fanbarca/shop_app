@@ -8,11 +8,9 @@ import '../../../size_config.dart';
 import 'header.dart';
 import 'products_grid.dart';
 
-
 class Body extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
-
     return SafeArea(
       child: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
@@ -22,6 +20,7 @@ class Body extends ConsumerWidget {
             Header(),
             SizedBox(height: getProportionateScreenHeight(20)),
             ProductsGrid(),
+
           ],
         ),
       ),
